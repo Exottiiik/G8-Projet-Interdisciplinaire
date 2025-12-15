@@ -1,0 +1,63 @@
+!!! Générale
+system name SW_hopital
+session prompt default system-name
+system date 12/20/2025
+system timezone CET
+system time 00:00:00
+system daylight savings time enable
+system location "Salle des serveurs - Hopital Sainte-Isabelle"
+system contact "contact@hopitalsainteisabelle.be"
+!
+!
+!!! Sécurité
+session banner cli "Acces non autorise interdit"
+session login-attempt 3
+session login-timeout 30
+user password-size min 12
+!
+port-security 1/1-4 admin-status enable
+port-security 1/5-24 admin-status disable
+!
+no ip service telnet
+no ip service port 23
+ip service ssh
+ip service port 22
+ip service ftp
+ip service port 21
+ip service udp-relay
+ip service port 67
+no ip service http
+no ip service port 80
+no ip service network-time
+no ip service port 123
+no ip service snmp
+no ip service port 161
+no ip service secure-http
+no ip service port 443
+!
+aaa authentication ssh local
+session timeout cli 5
+!
+!
+!!! VLAN
+vlan 10 enable name vlan_medicaux
+vlan 20 enable name vlan_admin
+vlan 30 enable name vlan_logistique_technique
+vlan 40 enable name vlan_hotelerie
+vlan 50 enable name vlan_informatique
+vlan 200 enable name vlan_serveurs_dmz
+vlan 210 enable name vlan_extranet
+vlan 220 enable name vlan_wifi_guest
+!
+ip interface vlan_medicaux address 10.10.1.254 mask 255.255.254.0 vlan 10
+ip interface vlan_admin address 10.10.2.62 mask 255.255.255.192 vlan 20
+ip interface vlan_logistique_technique address 10.10.2.94 mask 255.255.255.224 vlan 30
+ip interface vlan_hotelerie address 10.10.2.110 mask 255.255.255.240 vlan 40
+ip interface vlan_informatique address 10.10.2.126 mask 255.255.255.240 vlan 50
+ip interface vlan_serveurs_dmz address 10.10.9.14 mask 255.255.255.240 vlan 200
+ip interface vlan_extranet address 10.10.10.254 mask 255.255.255.0 vlan 210
+ip interface vlan_wifi_visiteur address 10.10.14.254 mask 255.255.252.0 vlan 220
+!
+!
+copy running-config working
+!
