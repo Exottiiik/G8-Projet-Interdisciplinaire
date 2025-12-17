@@ -20,6 +20,7 @@ interfaces 1/1-8 admin up !! Up les 8 premiers ports
 interfaces 1/9-28 admin down !! Down les 16 autres ports
 port-security 1/1-8 admin-status enable !! Active la surveillance MAC
 port-security 1/1-8 maximum 1 !! Limiter les adresses mac à une seule par port
+port-security 1/6 maximum 2 !! Autoriser 2 MAC car 2 serveurs
 port-security 1/1-8 violation shutdown !! S'il y a une autre adresse MAC que celle déjà connue, shutdown le port
 !
 no ip service telnet !! Active les services nécessaires et désactive ceux qui ne le sont pas
@@ -90,7 +91,8 @@ ip helper dhcp-snooping port 1/7-28 client-only
 !
 !
 !!! Sauvegarde
-copy running-config working
-copy certified working !! Permet la commande suivante lors du premier boot en mode certifié
+copy running-config working !! Première tentative de sauvegarde
+copy certified working !! Permet la commande suivante si le switch boot en mode certifié
 copy working certified !! Copie la config sauvegardée sur la config certified pour éviter la perte lorsqu'il y a un problème
+write memory !! Deuxième tentative de sauvegarde si le switch était en mode certifié
 !
