@@ -79,7 +79,7 @@ ip static-route 10.10.2.96/28 gateway 10.10.2.110
 ip static-route 10.10.2.112/28 gateway 10.10.2.126
 ip static-route 10.10.9.0/28 gateway 10.10.9.14
 ip static-route 10.10.10.0/24 gateway 10.10.10.254
-ip static-route 10.10.11.0/22 gateway 10.10.15.254
+ip static-route 10.10.12.0/22 gateway 10.10.15.254
 !
 !
 !!! DHCP
@@ -91,5 +91,6 @@ ip helper dhcp-snooping port 1/7-28 client-only
 !
 !!! Sauvegarde
 copy running-config working
+copy certified working !! Permet la commande suivante lors du premier boot en mode certifié
 copy working certified !! Copie la config sauvegardée sur la config certified pour éviter la perte lorsqu'il y a un problème
 !
