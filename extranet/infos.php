@@ -1,5 +1,6 @@
 <?php
 $pageTitle = "Informations Partagées";
+$themeClass = "theme-extranet";
 
 
 require_once '_db.php';

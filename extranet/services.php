@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Prise de Rendez-vous";
+$pageTitle = "Services & Équipes";
 $themeClass = "theme-extranet";
 
 
