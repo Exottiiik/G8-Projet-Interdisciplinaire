@@ -1,0 +1,41 @@
+/* assets/css/style.css */
+:root {
+    --extranet-color: #198754; /* Vert Bootstrap */
+    --extranet-bg: #d1e7dd;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* Thème Extranet */
+body.theme-extranet {
+    background-color: #fcfcfc;
+}
+body.theme-extranet .navbar {
+    background-color: var(--extranet-color);
+}
+body.theme-extranet .btn-theme {
+    background-color: var(--extranet-color);
+    color: white;
+}
+body.theme-extranet .card-header {
+    background-color: var(--extranet-bg);
+    color: var(--extranet-color);
+    font-weight: bold;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+    transition: all 0.3s ease;
+}
+.navbar-brand, .nav-link {
+    color: white !important;
+}
