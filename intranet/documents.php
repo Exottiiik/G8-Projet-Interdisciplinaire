@@ -1,5 +1,6 @@
 <?php
 $pageTitle = "Documents Internes";
+$themeClass = "theme-intranet";
 
 
 require_once '_db.php';
