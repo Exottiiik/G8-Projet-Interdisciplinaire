@@ -1,6 +1,15 @@
 <?php
-$pageTitle = "Intranet - Tableau de bord";
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 include 'layout/header.php';
+
+require_once '_db.php';
+
+$pageTitle = "Intranet - Tableau de bord";
 ?>
 
 <div class="text-center mb-5">

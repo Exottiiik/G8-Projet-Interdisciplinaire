@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 $pageTitle = "Extranet - Partenaires";
 include 'layout/header.php';
 ?>
