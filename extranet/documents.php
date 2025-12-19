@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 $pageTitle = "Documents extranet";
 $themeClass = "theme-extranet"; 
 require_once '_db.php';
