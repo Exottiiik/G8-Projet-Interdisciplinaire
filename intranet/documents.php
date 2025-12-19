@@ -1,4 +1,10 @@
 <?php
+session_start();
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
 $pageTitle = "Documents Internes";
 $themeClass = "theme-intranet";
 
